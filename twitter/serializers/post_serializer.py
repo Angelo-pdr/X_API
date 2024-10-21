@@ -1,12 +1,12 @@
 from rest_framework import serializers
 from twitter.models.post import Post
-from twitter.models.users import User
+from twitter.models.user import User
 from twitter.serializers.user_serializer import UserSerializer
 
 class PostSerializer(serializers.ModelSerializer):
-    usuario = User
-    user = UserSerializer(usuario , read_only=True, many=True)
+    author_name = serializers.CharField(source='author.username', read_only=True)
+
     class Meta:
         model = Post
-        fields = ['user','author', 'body', 'created_at']
+        fields = ['author','body', 'created_at', 'author_name']
         

@@ -1,4 +1,4 @@
-from twitter.models.users import User
+from twitter.models.user import User
 from django.db import models
 
 class Post (models.Model):
